@@ -49,7 +49,7 @@ SpringGenerator.prototype.askFor = function askFor() {
             type: 'string',
             name: 'packageName',
             message: 'Enter default package name:',
-            default: 'com.myapp'
+            default: 'com.techolution'
         }, {
             type: 'string',
             name: 'baseName',
@@ -60,20 +60,24 @@ SpringGenerator.prototype.askFor = function askFor() {
             name: 'javaVersion',
             message: 'Enter Java version:',
             default: '1.8'
-        }, {
-            type: 'checkbox',
-            name: 'packagingType',
-            message: 'Package type:',
-            choices: [
-                {
-                    name: 'Jar',
-                    value: 'jar'
-                }, {
-                    name: 'War',
-                    value: 'war'
-                }
-            ]
-        }, {
+        },
+//        {
+//            type: 'string',
+//            name: 'packagingType',
+//            message: 'Package type:',
+//            default: 'jar'
+//            choices: [
+//                {
+//                    name: 'Jar',
+//                    value: 'jar'
+//                }
+//                , {
+//                    name: 'War',
+//                    value: 'war'
+//                }
+//           ]
+//        },
+        {
             type: 'checkbox',
             name: 'buildTool',
             message: 'Select build tool:',
@@ -94,10 +98,12 @@ SpringGenerator.prototype.askFor = function askFor() {
                 {
                     name: 'Web',
                     value: 'web'
-                }, {
-                    name: 'Jetty (Tomcat will be uninstalled)',
-                    value: 'jetty'
-                }, {
+                },
+//                {
+//                    name: 'Jetty (Tomcat will be uninstalled)',
+//                    value: 'jetty'
+//                },
+                {
                     name: 'Security',
                     value: 'security'
                 }, {
@@ -106,40 +112,47 @@ SpringGenerator.prototype.askFor = function askFor() {
                 },  {
                     name: 'Websocket',
                     value: 'websocket'
-                }, {
-                    name: 'Jersey (JAX-RS)',
-                    value: 'jersey'
-                }, {
-                    name: 'Rest Repositories',
-                    value: 'rest'
-                }, {
-                    name: 'Hypermedia (HATEOAS)',
-                    value: 'hateoas'
-                }, {
-                    name: 'Mobile',
-                    value: 'mobile'
-                }, {
-                    name: 'REST Docs',
-                    value: 'restdocs'
                 }
+//                {
+//                    name: 'Jersey (JAX-RS)',
+//                    value: 'jersey'
+//                },
+//                {
+//                    name: 'Rest Repositories',
+//                    value: 'rest'
+//                },
+//                {
+//                    name: 'Hypermedia (HATEOAS)',
+//                    value: 'hateoas'
+//                },
+//                {
+//                    name: 'Mobile',
+//                    value: 'mobile'
+//                },
+//                {
+//                    name: 'REST Docs',
+//                    value: 'restdocs'
+//                }
             ]
-        }, {
-            type: 'checkbox',
-            name: 'templates',
-            message: 'Select Template Engine:',
-            choices: [
-                {
-                    name: 'Thymeleaf',
-                    value: 'thymeleaf'
-                }, {
-                    name: 'Groovy Templates',
-                    value: 'gtemplates'
-                }, {
-                    name: 'Mustache',
-                    value: 'mustache'
-                }
-            ]
-        }, {
+        },
+//        {
+//            type: 'checkbox',
+//            name: 'templates',
+//            message: 'Select Template Engine:',
+//            choices: [
+//                {
+//                    name: 'Thymeleaf',
+//                    value: 'thymeleaf'
+//                }, {
+//                    name: 'Groovy Templates',
+//                    value: 'gtemplates'
+//                }, {
+//                    name: 'Mustache',
+//                    value: 'mustache'
+//                }
+//            ]
+//        },
+        {
             type: 'checkbox',
             name: 'data',
             message: 'Select Data support:',
@@ -200,40 +213,52 @@ SpringGenerator.prototype.askFor = function askFor() {
                 }, {
                     name: 'Config Client',
                     value: 'configClient'
-                }, {
-                    name: 'Config Server',
-                    value: 'configServer'
-                }, {
+                },
+//                {
+//                    name: 'Config Server',
+//                    value: 'configServer'
+//                },
+                {
                     name: 'Eureka',
                     value: 'eureka'
-                }, {
-                    name: 'Eureka Server',
-                    value: 'eurekaServer'
-                }, {
-                    name: 'Feign',
-                    value: 'feign'
-                }, {
+                }
+//                , {
+//                    name: 'Eureka Server',
+//                    value: 'eurekaServer'
+//                }
+                ,
+//                 {
+//                    name: 'Feign',
+//                    value: 'feign'
+//                },
+                 {
                     name: 'Hystrix',
                     value: 'hystrix'
-                }, {
-                    name: 'Hystrix Dashboard',
-                    value: 'hystrixDashboard'
-                }, {
+                },
+//                 {
+//                    name: 'Hystrix Dashboard',
+//                    value: 'hystrixDashboard'
+//                },
+                 {
                     name: 'OAuth2',
                     value: 'oauth2'
                 }, {
                     name: 'Ribbon',
                     value: 'ribbon'
-                }, {
-                    name: 'Turbine',
-                    value: 'turbine'
-                }, {
-                    name: 'Turbine AMQP',
-                    value: 'turbineAmqp'
-                }, {
-                    name: 'Zuul',
-                    value: 'zuul'
-                }, {
+                },
+//                 {
+//                    name: 'Turbine',
+//                    value: 'turbine'
+//                },
+//                 {
+//                    name: 'Turbine AMQP',
+//                    value: 'turbineAmqp'
+//                },
+//                {
+//                    name: 'Zuul',
+//                    value: 'zuul'
+//                },
+                 {
                     name: 'AWS',
                     value: 'aws'
                 }, {
@@ -255,40 +280,46 @@ SpringGenerator.prototype.askFor = function askFor() {
             name: 'io',
             message: 'Select I/O support:',
             choices: [
+//                {
+//                    name: 'Batch',
+//                    value: 'batch'
+//                },
+//                {
+//                    name: 'Integration',
+//                    value: 'integration'
+//                },
                 {
-                    name: 'Batch',
-                    value: 'batch'
-                }, {
-                    name: 'Integration',
-                    value: 'integration'
-                }, {
                     name: 'JMS (HornetQ)',
                     value: 'jms'
-                }, {
+                },
+                {
                     name: 'AMQP',
                     value: 'amqp'
-                }, {
+                },
+                 {
                     name: 'Mail',
                     value: 'mail'
                 }
             ]
-        }, {
-            type: 'checkbox',
-            name: 'social',
-            message: 'Select Social APIs:',
-            choices: [
-                {
-                    name: 'Facebook',
-                    value: 'facebook'
-                }, {
-                    name: 'LinkedIn',
-                    value: 'linkedin'
-                }, {
-                    name: 'Twitter',
-                    value: 'twitter'
-                }
-            ]
-        }, {
+        },
+//        {
+//            type: 'checkbox',
+//            name: 'social',
+//            message: 'Select Social APIs:',
+//            choices: [
+//                {
+//                    name: 'Facebook',
+//                    value: 'facebook'
+//                }, {
+//                    name: 'LinkedIn',
+//                    value: 'linkedin'
+//                }, {
+//                    name: 'Twitter',
+//                    value: 'twitter'
+//                }
+//            ]
+//        },
+        {
             type: 'checkbox',
             name: 'ops',
             message: 'Select OPS tools:',
@@ -301,12 +332,14 @@ SpringGenerator.prototype.askFor = function askFor() {
                     value: 'remoteshell'
                 }
             ]
-        }, {
-            type: 'confirm',
-            name: 'useSpock',
-            message: 'Use Spock?',
-            default: true
-        }, {
+        },
+//        {
+//            type: 'confirm',
+//            name: 'useSpock',
+//            message: 'Use Spock?',
+//            default: true
+//        },
+        {
             type: 'string',
             name: 'groovyVersion',
             message: 'Enter Groovy version:',
@@ -319,6 +352,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.packageName = props.packageName;
         this.baseName = props.baseName;
         this.javaVersion = props.javaVersion;
+        props.packagingType = 'jar';
         this.packagingType = props.packagingType;
         this.coreWeb = props.coreWeb;
         this.templates = props.templates;
@@ -355,6 +389,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.restdocs = hasCoreWeb('restdocs');
 
         // Template Engines
+        props.templates = [];
         var hasTemplate = function(templateStarter) {
             return props.templates.indexOf(templateStarter) !== -1;
         };
@@ -426,6 +461,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.mail = hasIO('mail');
 
         // Social
+        props.social = [];
         var hasSocial = function(socialStarter) {
             return props.social.indexOf(socialStarter) !== -1;
         };
@@ -459,10 +495,10 @@ SpringGenerator.prototype.app = function app() {
 
     this.template('Application.java', srcDir + '/Application.java');
 
-    if (this.useSpock) {
-        var testDir = 'src/test/groovy/' + packageFolder;
-        mkdirp(testDir);
-    }
+//    if (this.useSpock) {
+//        var testDir = 'src/test/groovy/' + packageFolder;
+//        mkdirp(testDir);
+//    }
     if (this.web || this.thymeleaf || this.gtemplates || this.mustache) {
         mkdirp('src/main/resources');
         mkdirp('src/main/resources/static');
