@@ -40,12 +40,13 @@ SpringGenerator.prototype.askFor = function askFor() {
 
 
     var prompts = [
+//        {
+//            type: 'string',
+//            name: 'bootVersion',
+//            message: 'Enter Spring Boot version:',
+//            default: '1.4.1.RELEASE'
+//        },
         {
-            type: 'string',
-            name: 'bootVersion',
-            message: 'Enter Spring Boot version:',
-            default: '1.4.1.RELEASE'
-        }, {
             type: 'string',
             name: 'packageName',
             message: 'Enter default package name:',
@@ -60,12 +61,19 @@ SpringGenerator.prototype.askFor = function askFor() {
             name: 'parentProject',
             message: 'Enter the name of the project this belongs to',
             default: 'techocamp'
-        }, {
-            type: 'string',
-            name: 'javaVersion',
-            message: 'Enter Java version:',
-            default: '1.8'
         },
+        {
+            type: 'string',
+            name: 'modelName',
+            message: 'Enter the name of the first domain you plan on creating (should be lower case)',
+            default: 'training'
+        },
+//        {
+//            type: 'string',
+//            name: 'javaVersion',
+//            message: 'Enter Java version:',
+//            default: '1.8'
+//        },
 //        {
 //            type: 'string',
 //            name: 'packagingType',
@@ -358,12 +366,18 @@ SpringGenerator.prototype.askFor = function askFor() {
     ];
 
     this.prompt(prompts, function(props) {
+        props.bootVersion = '1.4.1.RELEASE';
         this.bootVersion = props.bootVersion;
         this.packageName = props.packageName;
         this.baseName = props.baseName;
         this.parentProject = props.parentProject;
         this.dockerTag = 'nexus.techolution.com:8123/'+props.baseName+'/'+props.parentProject;
+        props.javaVersion = '1.8';
         this.javaVersion = props.javaVersion;
+        this.modelName = props.modelName;
+        this.capModelName = props.modelName.replace(/\b[a-z]/g, function(letter) {
+                                               return letter.toUpperCase();
+                                           });
         props.packagingType = 'jar';
         this.packagingType = props.packagingType;
         this.coreWeb = props.coreWeb;
@@ -508,6 +522,9 @@ SpringGenerator.prototype.app = function app() {
     this.template('Application.java', srcDir + '/Application.java');
     this.template('SwaggerConfiguration.java', srcDir + '/config/SwaggerConfiguration.java');
     this.template('Config.java', srcDir + '/config/Config.java');
+    this.template('RestController.java', srcDir + '/controller/'+this.capModelName+'RestController.java');
+    this.template('Service.java', srcDir + '/service/'+this.capModelName+'Service.java');
+    this.template('Model.java', srcDir + '/model/'+this.capModelName+'.java');
 
 //    if (this.useSpock) {
 //        var testDir = 'src/test/groovy/' + packageFolder;
