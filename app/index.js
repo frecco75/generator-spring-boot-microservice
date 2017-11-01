@@ -53,8 +53,13 @@ SpringGenerator.prototype.askFor = function askFor() {
         }, {
             type: 'string',
             name: 'baseName',
-            message: 'Enter base name of app:',
-            default: 'app'
+            message: 'Enter microservice name of app:',
+            default: 'training-server'
+        } , {
+            type: 'string',
+            name: 'parentProject',
+            message: 'Enter the name of the project this belongs to',
+            default: 'techocamp'
         }, {
             type: 'string',
             name: 'javaVersion',
@@ -84,7 +89,9 @@ SpringGenerator.prototype.askFor = function askFor() {
             choices: [
                 {
                     name: 'Gradle',
-                    value: 'gradle'
+                    value: 'gradle',
+                    checked: true
+
                 }, {
                     name: 'Maven',
                     value: 'maven'
@@ -220,7 +227,8 @@ SpringGenerator.prototype.askFor = function askFor() {
 //                },
                 {
                     name: 'Eureka',
-                    value: 'eureka'
+                    value: 'eureka',
+                    checked: true
                 }
 //                , {
 //                    name: 'Eureka Server',
@@ -241,7 +249,8 @@ SpringGenerator.prototype.askFor = function askFor() {
 //                },
                  {
                     name: 'OAuth2',
-                    value: 'oauth2'
+                    value: 'oauth2',
+                    checked: true
                 }, {
                     name: 'Ribbon',
                     value: 'ribbon'
@@ -326,7 +335,8 @@ SpringGenerator.prototype.askFor = function askFor() {
             choices: [
                 {
                     name: 'Actuator',
-                    value: 'actuator'
+                    value: 'actuator',
+                    checked: true
                 }, {
                     name: 'Remote Shell',
                     value: 'remoteshell'
@@ -351,6 +361,8 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.bootVersion = props.bootVersion;
         this.packageName = props.packageName;
         this.baseName = props.baseName;
+        this.parentProject = props.parentProject;
+        this.dockerTag = 'nexus.techolution.com:8123/'+props.baseName+'/'+props.parentProject;
         this.javaVersion = props.javaVersion;
         props.packagingType = 'jar';
         this.packagingType = props.packagingType;
@@ -494,6 +506,8 @@ SpringGenerator.prototype.app = function app() {
     }
 
     this.template('Application.java', srcDir + '/Application.java');
+    this.template('SwaggerConfiguration.java', srcDir + '/config/SwaggerConfiguration.java');
+    this.template('Config.java', srcDir + '/config/Config.java');
 
 //    if (this.useSpock) {
 //        var testDir = 'src/test/groovy/' + packageFolder;
