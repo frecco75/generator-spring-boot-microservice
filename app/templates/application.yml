@@ -1,6 +1,51 @@
-info:
-  version: 0.0.1
+server:
+
+  port: <%=portNumber%>
+
+
+
+
 
 spring:
+
   application:
-    name: <%= baseName %>
+
+      name: <%=baseName%>
+
+  profiles:
+
+    active: local
+
+  security:
+
+    basic:
+
+      enabled: false
+ 
+<% if (hystrix) {%> 
+hystrix: 
+  threadpool: 
+   default:
+    coreSize: 3
+    maxQueueSize: -1
+    queueSizeRejectionThreshold: 3
+  command: 
+   default: 
+    circuitBreaker: 
+     sleepWindowInMilliseconds: 30000
+     requestVolumeThreshold: 2
+    execution:
+     isolation:
+      strategy: THREAD
+      thread:
+        timeoutINMilliseconds: 500
+      
+  <%} %>
+    
+
+
+
+
+
+
+ 

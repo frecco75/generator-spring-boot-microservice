@@ -68,6 +68,15 @@ SpringGenerator.prototype.askFor = function askFor() {
             message: 'Enter the name of the first domain you plan on creating (should be lower case)',
             default: 'training'
         },
+        {
+        	type: 'string',
+        	name:'portNumber',
+        	message:'Enter port number',
+        	default:'8080'
+        },
+        
+        	
+        
 //        {
 //            type: 'string',
 //            name: 'javaVersion',
@@ -374,6 +383,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.dockerTag = 'nexus.techolution.com:8123/'+props.baseName+'/'+props.parentProject;
         props.javaVersion = '1.8';
         this.javaVersion = props.javaVersion;
+        this.portNumber=props.portNumber;
         this.modelName = props.modelName;
         this.capModelName = props.modelName.replace(/\b[a-z]/g, function(letter) {
                                                return letter.toUpperCase();
@@ -526,7 +536,7 @@ SpringGenerator.prototype.app = function app() {
     this.template('RestController.java', srcDir + '/controller/'+this.capModelName+'RestController.java');
     this.template('Service.java', srcDir + '/service/'+this.capModelName+'Service.java');
     this.template('Model.java', srcDir + '/model/'+this.capModelName+'.java');
-
+   
 //    if (this.useSpock) {
 //        var testDir = 'src/test/groovy/' + packageFolder;
 //        mkdirp(testDir);
@@ -536,6 +546,10 @@ SpringGenerator.prototype.app = function app() {
         mkdirp('src/main/resources/static');
         mkdirp('src/main/resources/templates');
         this.template('application.yml', resourceDir + '/application.yml');
+        this.template('application-local.yml',resourceDir + '/application-local.yml')
+        this.template('application-test.yml',resourceDir + '/application-test.yml')
+        this.template('application-container.yml',resourceDir + '/application-container.yml')
+        this.template('application-prod.yml',resourceDir + '/application-prod.yml')
     }
     this.config.set('packageName', this.packageName);
     this.config.set('packageFolder', packageFolder);
