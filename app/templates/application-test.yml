@@ -1,0 +1,72 @@
+#security:
+
+#  oauth2:
+
+#    resource:
+
+#      jwt:
+
+#        key-uri: http://localhost:9999/auth/oauth/token_key
+
+#  basic:
+
+#    enabled: false
+
+#  user:
+
+#    name: admin
+
+
+<% if (eureka) {%>
+eureka:
+
+  client:
+
+    service-url:
+
+      defaultZone: http://localhost:8761/eureka/
+
+
+
+eureka:
+
+  client:
+
+    enabled: false
+
+
+<%}%>
+  spring:
+ <%if (jpa) {%>
+   jpa:
+
+     show-sql: true
+
+     hibernate:
+
+       ddl-auto: update
+
+     properties:
+
+       hibernate:
+
+         dialect: org.hibernate.dialect.MySQL5Dialect
+<%}%>
+   datasource:
+
+     url: jdbc:h2:~/test
+
+     username: sa
+
+     password:
+
+     driver-class-name: org.h2.Driver
+
+
+<% if (redis) {%> 
+  redis:
+
+   hostname: localhost
+
+   port: 6379
+   <%}%>
