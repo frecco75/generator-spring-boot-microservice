@@ -14,7 +14,7 @@ distDocker {
 task buildDocker(type: Docker) {
     baseImage = 'davidcaste/alpine-java-unlimited-jce:jdk8'
     push = project.hasProperty('push')
-    tag = <%=dockerTag%>
+    tag = '<%=dockerTag%>'
     addFile {
         from jar
         rename {'app.jar'}
