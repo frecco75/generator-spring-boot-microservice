@@ -39,8 +39,8 @@ public class <%=capModelName%>Service {
 //            return null;
 //        }
 
-  return null;
-    }
+
+    
 
     public <%=capModelName%> update<%=capModelName%>(final String id, <%=capModelName%> <%=modelName%>) {
       return null;
