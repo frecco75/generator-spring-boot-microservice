@@ -1,7 +1,7 @@
-package <%=packageName%>;
+package <%=packageName%>.service;
 
-import com.techolution.training.<%=capModelName%>;
-import com.techolution.training.repository.<%=capModelName%>Repository;
+import com.techolution.model.<%=capModelName%>;
+//import com.techolution.training.repository.<%=capModelName%>Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

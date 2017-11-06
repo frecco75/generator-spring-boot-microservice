@@ -1,4 +1,4 @@
-package <%=packageName%>;
+package <%=packageName%>.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;

@@ -1,7 +1,7 @@
-package <%=packageName%>;
+package <%=packageName%>.controller;
 
-import com.techolution.training.<%=capModelName%>;
-import com.techolution.training.service.<%=capModelName%>Service;
+import com.techolution.model.<%=capModelName%>;
+import com.techolution.service.<%=capModelName%>Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +20,7 @@ public class <%=capModelName%>RestController {
 
     @GetMapping("/")
     public ResponseEntity<List<<%=capModelName%>>> get<%=capModelName%>() {
-        List<<%=capModelName%>> <%=modelName%>s = <%=modelName%>Service.get<%=capModelName%>();
+        List<<%=capModelName%>> <%=modelName%>s = <%=modelName%>Service.get<%=capModelName%>s();
         if (<%=modelName%>s != null) {
             return new ResponseEntity(<%=modelName%>s, HttpStatus.OK);
         } else {
@@ -29,7 +29,7 @@ public class <%=capModelName%>RestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<v> get<%=capModelName%>(@PathVariable final String id) {
+    public ResponseEntity<<%=capModelName%>> get<%=capModelName%>(@PathVariable final String id) {
 <%=capModelName%> <%=modelName%> = <%=modelName%>Service.get<%=capModelName%>(id);
         if (<%=modelName%> != null) {
             return new ResponseEntity(<%=modelName%>, HttpStatus.OK);
@@ -38,15 +38,15 @@ public class <%=capModelName%>RestController {
         }
     }
 
-    @PostMapping("/")
-    public ResponseEntity<<%=capModelName%>> create<%=capModelName%>(@RequestBody <%=capModelName%> <%=modelName%>) {
-<%=capModelName%> saved<%=capModelName%> = <%=modelName%>Service.create<%=capModelName%>e(<%=modelName%>);
-        if (saved<%=capModelName%> != null) {
-            return new ResponseEntity(saved<%=capModelName%>, HttpStatus.CREATED);
-        } else {
-            return new ResponseEntity(saved<%=capModelName%>, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+    //@PostMapping("/")
+    //public ResponseEntity<<%=capModelName%>> create<%=capModelName%>(@RequestBody <%=capModelName%> <%=modelName%>) {
+//<%=capModelName%> saved<%=capModelName%> = <%=modelName%>Service.create<%=capModelName%>e(<%=modelName%>);
+  //      if (saved<%=capModelName%> != null) {
+    //        return new ResponseEntity(saved<%=capModelName%>, HttpStatus.CREATED);
+      //  } else {
+        //    return new ResponseEntity(saved<%=capModelName%>, HttpStatus.INTERNAL_SERVER_ERROR);
+        //}
+    //}
 
     @PutMapping("/{id}")
     public ResponseEntity<<%=capModelName%>> update<%=capModelName%>(@PathVariable final String id, @RequestBody <%=capModelName%> <%=modelName%>) {
