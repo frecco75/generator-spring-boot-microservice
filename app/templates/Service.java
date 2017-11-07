@@ -1,7 +1,7 @@
-package <%=packageName%>;
+package <%=packageName%>.service;
 
-import com.techolution.training.<%=capModelName%>;
-import com.techolution.training.repository.<%=capModelName%>Repository;
+import com.techolution.model.<%=capModelName%>;
+//import com.techolution.training.repository.<%=capModelName%>Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -39,8 +39,8 @@ public class <%=capModelName%>Service {
 //            return null;
 //        }
 
-  return null;
-    }
+
+    
 
     public <%=capModelName%> update<%=capModelName%>(final String id, <%=capModelName%> <%=modelName%>) {
       return null;
