@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/json/<%=modelName%>")
+@CrossOrigin
 public class <%=capModelName%>RestController {
 
     final <%=capModelName%>Service <%=modelName%>Service;
