@@ -1,0 +1,86 @@
+apply from: "../../java.gradle"
+
+apply plugin: "org.springframework.boot"
+apply plugin: 'io.spring.dependency-management'
+
+group = "<%=packageName%>"
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion"
+    }
+}
+
+apply plugin: 'docker'
+apply plugin: 'application'
+mainClassName = '<%=packageName%>.AuthServerApplication'
+
+def profiles = 'release'
+
+bootRun {
+    args = ["--spring.profiles.active=" + profiles]
+}
+
+distDocker {
+    dryRun = true
+}
+
+task buildDocker(type: Docker) {
+    baseImage = 'davidcaste/alpine-java-unlimited-jce:jdk8'
+    push = project.hasProperty('push')
+    tag = '<%=dockerTag%>'
+    addFile {
+        from jar
+        rename {'app.jar'}
+    }
+//    entryPoint(['java', '-Dspring.profiles.active=container', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar'])
+    // exposePort(8080)
+    entryPoint(['java', '-Djava.security.egd=file:/dev/./urandom', '-jar', '/app.jar'])
+}
+
+buildDocker.dependsOn(build)
+
+dependencies {
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-devtools:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+    // compile "org.springframework.boot:spring-boot-starter-data-redis:$springBootVersion"
+    // compile "org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion"
+<%if (jdbc) {%>
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+<%}%>    
+    compile "org.springframework.boot:spring-boot-starter-data-rest:$springBootVersion"
+    
+
+    // compile "org.springframework.cloud:spring-cloud-starter-eureka"
+
+    // compile "io.springfox:springfox-swagger2:2.4.0"
+    // compile "io.springfox:springfox-swagger-ui:2.4.0"
+    // compile group: 'com.netflix.hystrix', name: 'hystrix-javanica', version: '1.5.12'
+
+//    compile "org.springframework.boot:spring-boot-starter-freemarker:$springBootVersion"
+//    compile "org.webjars:bootstrap:3.3.7-1"
+//    compile "org.webjars:jquery:3.1.1-1"
+
+    //compile project(":components:position")
+    // compile project(":components:user")
+    
+    
+    // for OAuth 2.0 
+    compile("org.springframework.boot:spring-boot-starter-security")
+	compile ('org.springframework.security:spring-security-jwt:1.0.3.RELEASE')
+	compile("org.springframework.security.oauth:spring-security-oauth2:2.0.7.RELEASE")
+	
+	//For Mysql
+<%if (mysql) {%>    
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
+<%}%>		
+    //compile 'org.springframework.security.oauth:spring-security-oauth2:2.2.1.BUILD-SNAPSHOT'
+    //compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.2.RELEASE'
+    
+    
+}

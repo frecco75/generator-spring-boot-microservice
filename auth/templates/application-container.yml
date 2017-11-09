@@ -1,0 +1,40 @@
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-uri: http://auth.techolution.qa:{%=port%>}/auth/oauth/token_key
+  basic:
+    enabled: false
+<%if (jdbc) {%>
+spring:
+  profiles: container
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: <% if (mysql){%>org.hibernate.dialect.MySQL5Dialect<%}%>
+  datasource:
+<% if (mysql) {%>    
+    platform: mysql
+    url: jdbc:mysql://<enter_mysql_url>:3306/auth_db
+    username: admin
+    password: techo#2017
+    driver-class-name: com.mysql.jdbc.Driver
+    <%}%>
+<%}%>
+config:
+   oauth2:
+        ui-uri: http://techocamp.techolution.qa
+
+# eureka:
+#   client:
+#     service-url:
+#       defaultZone: http://eureka.techolution.qa/eureka/
+#   instance:
+#     hostname: techocamp-api.techolution.qa
+#     status-page-url: http://techocamp-api.techolution.qa/info
+#     health-check-url: http://techocamp-api.techolution.qa/health
+#     home-page-url: http://techocamp-api.techolution.qa/

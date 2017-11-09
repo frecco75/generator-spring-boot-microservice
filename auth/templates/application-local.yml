@@ -1,0 +1,36 @@
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-uri: http://localhost:<%=port%>/auth/oauth/token_key
+  basic:
+    enabled: false
+#  user:
+#    name: admin
+# eureka: 
+#   client: 
+#     service-url: 
+#       defaultZone: "http://localhost:8762/eureka/"
+<%if (jdbc) {%>
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        <% if (mysql) {%>    
+  datasource:
+    url: jdbc:mysql://localhost:3309/oauthdb?useSSL=false
+    username: root #admin
+    password: admin123 #techo#2017
+    driver-class-name: com.mysql.jdbc.Driver
+ <%}%>
+<%}%>
+config:
+  oauth2:
+    ui-uri: http://localhost:4200/
+
+logging.level.org.springframework.security.oauth2: DEBUG
+  
