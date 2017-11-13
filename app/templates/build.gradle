@@ -90,7 +90,7 @@ dependencies {
 
   <% if (actuator) { %>compile "org.springframework.boot:spring-boot-starter-actuator"<% } %>
   <% if (remoteshell) { %>compile "org.springframework.boot:spring-boot-starter-remote-shell"<% } %>
-  compile "org.codehaus.groovy:groovy:<%= groovyVersion %>"
+//  compile "org.codehaus.groovy:groovy:<%= groovyVersion %>"
 
   <% if (h2) { %>runtime "com.h2database:h2"<% } %>
   <% if (hsqldb) { %>runtime "org.hsqldb:hsqldb"<% } %>
@@ -102,7 +102,6 @@ dependencies {
     testcompile "org.spockframework:spock-spring"
     testcompile "org.spockframework:spock-core:1.0-groovy-2.4"
     <% } %>
-  <% if (web) { %>testcompile "org.springframework.boot:spring-boot-starter-test"<% } %>
 
 //    compile project(":components:common")
 
