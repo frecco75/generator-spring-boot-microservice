@@ -38,7 +38,7 @@ dependencies {
   
   compile "org.springframework.boot:spring-boot-devtools:$springBootVersion"
 
-  <% if (security) { %>org.springframework.boot:spring-boot-starter-security"<% } %>
+  <% if (security) { %>compile "org.springframework.boot:spring-boot-starter-security"<% } %>
   <% if (aop) { %>compile "org.springframework.boot:spring-boot-starter-aop"<% } %>
   <% if (websocket) { %>compile "org.springframework.boot:spring-boot-starter-websocket"<% } %>
   <% if (jersey) { %>compile "org.springframework.boot:spring-boot-starter-jersey"<% } %>
