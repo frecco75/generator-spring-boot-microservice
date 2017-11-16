@@ -1,21 +1,21 @@
 {
-  "name": "generator-spring",
+  "name": "generator-spring-boot-microservice",
   "version": "1.0.0",
-  "description": "A Yeoman Generator for Spring Boot and Spring Cloud",
+  "description": "A Yeoman Generator for Spring Boot Microservices",
   "keywords": [
     "yeoman-generator"
   ],
-  "homepage": "https://github.com/davetownsend/generator-spring",
-  "bugs": "https://github.com/davetownsend/generator-spring/issues",
+  "homepage": "https://github.com/Techolution/generator-spring-boot-microservice",
+  "bugs": "https://github.com/Techolution/generator-spring-boot-microservice/issues",
   "author": {
-    "name": "Dave Townsend",
-    "email": "dave.townsend01@gmail.com",
-    "url": "https://github.com/davetownsend"
+    "name": "Tim Delesio/Dave Townsend",
+    "email": "tim@Techolution.com",
+    "url": "https://github.com/Techolution"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/davetownsend/generator-spring.git"
+    "url": "https://github.com/Techolution/generator-spring-boot-microservice.git"
   },
   "scripts": {
     "test": "mocha"

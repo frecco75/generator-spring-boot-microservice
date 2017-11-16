@@ -28,28 +28,16 @@ _The interactive CLI menu will guide the way._
 
 
 ### Extras (Sub-generators)
-Creates a REST endpoint
+Creates an Authorization Server
 
 ```
-$ yo spring:rest
+$ yo spring:auth
 ```
 
-Creates a REST endpoint with HATEOAS support *(has dependency on choosing the hateoas starter option)*
 
-```
-$ yo spring:hateoas
-```
-
-Creates an initial Thymeleaf view *(has dependency on choosing the Thyemleaf starter option)*
-
-```
-$ yo spring:route
-```
 
 ## TODO
-- Add the new Spring Cloud libs supported with Spring Boot 1.5.x
-- Add support for createing a serverless (AWS) project with Spring Cloud Function. 
-- Add React support. This will essentially scaffold an opinionated react SPA (webpack/es6/material-ui) as the front end.
+
 
 ## License
 
