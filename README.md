@@ -13,16 +13,16 @@ A [Yeoman](http://yeoman.io) generator for scaffolding and bootstrapping [Spring
 $ npm install -g yo
 ```
 
-**Install generator-spring**
+**Install generator-spring-boot-microservice**
 
 ```
-$ npm install -g generator-spring
+$ npm install -g generator-spring-boot-microservice
 ```
 
 **Initiate spring-generator!**
 
 ```
-$ yo spring
+$ yo spring-boot-microservice
 ```
 _The interactive CLI menu will guide the way._
 
@@ -31,7 +31,7 @@ _The interactive CLI menu will guide the way._
 Creates an Authorization Server
 
 ```
-$ yo spring:auth
+$ yo spring-boot-microservice:auth
 ```
 
 
