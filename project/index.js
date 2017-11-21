@@ -163,7 +163,7 @@ SpringGenerator.prototype.askFor = function askFor() {
 
 SpringGenerator.prototype.app = function app() {
 
-    var rootDir = '~/'+this.baseName+'/';
+    var rootDir = this.projectName+'/';
     var appDir = rootDir+'applications';
     mkdirp(appDir);
 
