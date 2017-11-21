@@ -520,6 +520,7 @@ SpringGenerator.prototype.app = function app() {
     var packageFolder = this.packageName.replace(/\./g, '/');
     var rootDir = this.baseName+'/';
     var srcDir = rootDir+'src/main/java/' + packageFolder;
+    var testDir = rootDir+'src/test/java' + packageFolder;
     var resourceDir = rootDir+'src/main/resources';
     mkdirp(srcDir);
 
@@ -536,6 +537,7 @@ SpringGenerator.prototype.app = function app() {
     this.template('RestController.java', srcDir + '/controller/'+this.capModelName+'RestController.java');
     this.template('Service.java', srcDir + '/service/'+this.capModelName+'Service.java');
     this.template('Model.java', srcDir + '/model/'+this.capModelName+'.java');
+    this.template('ServiceTest.java', testDir + '/service/'+this.capModelName+'ServiceTest.java');
    
 //    if (this.useSpock) {
 //        var testDir = 'src/test/groovy/' + packageFolder;
