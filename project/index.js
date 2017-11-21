@@ -167,32 +167,10 @@ SpringGenerator.prototype.app = function app() {
     var appDir = rootDir+'applications';
     mkdirp(appDir);
 
-
-    this.template('AuthServerApplication.java', srcDir + '/AuthServerApplication.java');
-    this.template('OAuthClientDetails.java', srcDir + '/auth/domain/OAuthClientDetails.java');
-    this.template('OAuthClientDetailsBuilder.java', srcDir + '/auth/domain/OAuthClientDetailsBuilder.java');    
-    this.template('UserBuilder.java', srcDir + '/auth/domain/UserBuilder.java');
-
-    this.template('OAuthclientValidationException.java', srcDir + '/auth/exception/OAuthclientValidationException.java');
-    this.template('UserErrorMessages.java', srcDir + '/auth/exception/UserErrorMessages.java');
-    this.template('UserErrorType.java', srcDir + '/auth/exception/UserErrorType.java');
-    this.template('UserException.java', srcDir + '/auth/exception/UserException.java');
-
-    this.template('UserRespository.java', srcDir + '/auth/repository/UserRespository.java');
-
-    this.template('UserService.java', srcDir + '/auth/service/UserService.java');
-
- 
-        mkdirp('src/main/resources');
-        mkdirp('src/main/resources/static');
-        mkdirp('src/main/resources/templates');
-        this.template('application.yml', resourceDir + '/application.yml');
-        this.template('application-container.yml', resourceDir + '/application-container.yml');
-        this.template('application-local.yml', resourceDir + '/application-local.yml');
-        this.template('application-release.yml', resourceDir + '/application-release.yml');
- 
-    this.config.set('packageName', this.packageName);
-    this.config.set('packageFolder', packageFolder);
+    this.template('build.gradle', rootDir+'build.gradle');
+    this.template('docker-compose.yml', rootDir+'docker-compose.yml');
+    this.template('java.gradle', rootDir+'java.gradle');
+    this.template('settings.gradle', rootDir+'settings.gradle');
 };
 
 SpringGenerator.prototype.projectfiles = function projectfiles() {};
