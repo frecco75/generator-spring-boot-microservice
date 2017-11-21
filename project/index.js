@@ -49,7 +49,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         {
             type: 'string',
             name: 'javaVersion',
-            message: 'Enter the version of Java',
+            message: 'Enter the Java Version',
             default: '1.8'
         }
         , 
