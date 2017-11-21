@@ -1,0 +1,12 @@
+apply plugin: "java"
+
+
+sourceCompatibility = <%=javaVersion%>
+targetCompatibility = <%=javaVersion%>
+
+repositories {
+    mavenCentral()
+}
+
+
+

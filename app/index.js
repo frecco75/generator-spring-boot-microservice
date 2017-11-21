@@ -518,9 +518,9 @@ SpringGenerator.prototype.askFor = function askFor() {
 
 SpringGenerator.prototype.app = function app() {
     var packageFolder = this.packageName.replace(/\./g, '/');
-    var rootDir = this.baseName+'/';
+    var rootDir = '~/'+this.baseName+'/';
     var srcDir = rootDir+'src/main/java/' + packageFolder;
-    var testDir = rootDir+'src/test/java' + packageFolder;
+    var testDir = rootDir+'src/test/java/' + packageFolder;
     var resourceDir = rootDir+'src/main/resources';
     mkdirp(srcDir);
 

@@ -1,0 +1,35 @@
+//apply plugin: 'application'
+
+buildscript {
+    ext {
+        springBootVersion = <%=springBootVersion%>
+        springVersion = <%=springVersion%>
+
+        springCloudVersion = <%=springCloudVersion%>
+        springCloudSsoVersion = <%=springCloudSsoVersion%>
+        springCloudServicesVersion = <%=springCloudServicesVersion%>
+        springSecurityVersion = <%=springSecurityVersion%>
+
+        certTrusterVersion = "1.0.1.RELEASE"
+        hibernateVersion = <%=hibernateVersion%>
+        slf4jVersion = <%=slf4jVersion%>
+        junitVersion = <%=junitVersion%>
+        mysqlVersion = <%=mysqlVersion%>
+
+        dockerVersion = <%=dockerVersion%>
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.2.RELEASE"
+        classpath "se.transmode.gradle:gradle-docker:$dockerVersion"
+    }
+}
+
+//d
+
+

@@ -30,7 +30,7 @@ public class <%=capModelName%>ServiceTest {
     }
 
     @Autowired
-    private <%=capModelName%>Service employeeService;
+    private <%=capModelName%>Service <%=modelName%>Service;
 
 //    @MockBean
 //    private <%=capModelName%>Repository <%=modelName%>Repository;
