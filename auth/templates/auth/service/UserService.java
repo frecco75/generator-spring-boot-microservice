@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 import com.techolution.auth.exception.UserErrorMessages;
 import com.techolution.auth.exception.UserException;
 import com.techolution.auth.repository.UserRespository;
-import com.techolution.domain.user.User;
-import com.techolution.domain.user.UserType;
+import com.techolution.auth.domain.User;
+import com.techolution.auth.domain.UserType;
 
 @Service
 public class UserService implements UserDetailsService {

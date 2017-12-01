@@ -1,7 +1,7 @@
 package <%=packageName%>.auth.domain;
 
-import com.techolution.domain.user.User;
-import com.techolution.domain.user.UserType;
+import com.techolution.auth.domain.User;
+import com.techolution.auth.domain.UserType;
 
 public class UserBuilder {
 
