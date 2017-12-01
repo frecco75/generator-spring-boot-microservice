@@ -10,12 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 //@EnableDiscoveryClient
-<%if (jdbc) { %>}
+<%if (jdbc) { %>
 @EnableJpaRepositories
 <%}%>
 public class AuthServerApplication extends WebMvcConfigurerAdapter implements CommandLineRunner {
