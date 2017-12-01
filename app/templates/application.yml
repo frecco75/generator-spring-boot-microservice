@@ -1,26 +1,12 @@
 server:
-
   port: <%=portNumber%>
 
 
-
-
-
 spring:
-
   application:
-
       name: <%=baseName%>
-
   profiles:
-
     active: local
-
-  security:
-
-    basic:
-
-      enabled: false
  
 <% if (hystrix) {%> 
 hystrix: 

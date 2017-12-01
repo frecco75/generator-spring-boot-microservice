@@ -388,6 +388,9 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.capModelName = props.modelName.replace(/\b[a-z]/g, function(letter) {
                                                return letter.toUpperCase();
                                            });
+        this.capBaseName = props.baseName.replace(/\b[a-z]/g, function(letter) {
+                                               return letter.toUpperCase();
+                                           });
         props.packagingType = 'jar';
         this.packagingType = props.packagingType;
         this.coreWeb = props.coreWeb;
@@ -531,9 +534,15 @@ SpringGenerator.prototype.app = function app() {
         this.template('pom.xml', rootDir+'pom.xml');
     }
 
-    this.template('Application.java', srcDir + '/Application.java');
-    this.template('SwaggerConfiguration.java', srcDir + '/config/SwaggerConfiguration.java');
-    this.template('Config.java', srcDir + '/config/Config.java');
+    this.template('Application.java', srcDir + '/'+this.capBaseName+'Application.java');
+
+    this.template('config/SwaggerConfiguration.java', srcDir + '/config/SwaggerConfiguration.java');
+    this.template('config/Config.java', srcDir + '/config/Config.java');
+    this.template('config/CorsFilter.java', srcDir + '/config/CorsFilter.java');
+    this.template('config/MethodSecurityConfig.java', srcDir + '/config/MethodSecurityConfig.java');
+    this.template('config/OAuth2ResourceServerConfig.java', srcDir + '/config/OAuth2ResourceServerConfig.java');
+    this.template('config/ResourceServerWebConfig.java', srcDir + '/config/ResourceServerWebConfig.java');
+
     this.template('RestController.java', srcDir + '/controller/'+this.capModelName+'RestController.java');
     this.template('Service.java', srcDir + '/service/'+this.capModelName+'Service.java');
     this.template('Model.java', srcDir + '/model/'+this.capModelName+'.java');

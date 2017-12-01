@@ -11,7 +11,7 @@ dependencyManagement {
 
 apply plugin: 'docker'
 apply plugin: 'application'
-mainClassName = '<%=packageName%>.Application'
+mainClassName = '<%=packageName%>.<%=capBaseName%>Application'
 
 distDocker {
     dryRun = true
