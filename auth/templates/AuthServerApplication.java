@@ -1,6 +1,6 @@
 package <%=packageName%>;
 
-<%if (jdbc) { %>}
+<%if (jdbc) { %>
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 <%}%>
 import com.techolution.auth.domain.User;
@@ -27,8 +27,6 @@ public class AuthServerApplication extends WebMvcConfigurerAdapter implements Co
 		ROLE_TRUSTED_CLIENT,
 		ROLE_CLIENT
 	}
-
-	private static final Logger log = LoggerFactory.getLogger(AuthServerApplication.class);
 
 	@Autowired
 	private UserService userServices;

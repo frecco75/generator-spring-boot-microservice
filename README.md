@@ -36,7 +36,15 @@ $ yo spring-boot-microservice:auth
 
 
 
-## TODO
+## Release
+
+```
+1.  Increase the version number in package.json
+2.  Commit code to repo
+3.  npm publish
+4.  yo and update your generator
+
+```
 
 
 ## License
