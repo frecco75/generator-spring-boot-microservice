@@ -24,7 +24,7 @@ import org.springframework.security.oauth2.client.token.grant.code.Authorization
 <% if (hystrix) {%>@EnableCircuitBreaker<%}%>
 <% if (security) {%>@EnableResourceServer<%}%>
 <% if (jpa) {%>@EnableJpaRepositories<%}%>
-public class Application {
+public class <%=capModelName%>Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
