@@ -219,18 +219,33 @@ SpringGenerator.prototype.app = function app() {
     }
 
     this.template('AuthServerApplication.java', srcDir + '/AuthServerApplication.java');
-    this.template('OAuthClientDetails.java', srcDir + '/auth/domain/OAuthClientDetails.java');
-    this.template('OAuthClientDetailsBuilder.java', srcDir + '/auth/domain/OAuthClientDetailsBuilder.java');    
-    this.template('UserBuilder.java', srcDir + '/auth/domain/UserBuilder.java');
 
-    this.template('OAuthclientValidationException.java', srcDir + '/auth/exception/OAuthclientValidationException.java');
-    this.template('UserErrorMessages.java', srcDir + '/auth/exception/UserErrorMessages.java');
-    this.template('UserErrorType.java', srcDir + '/auth/exception/UserErrorType.java');
-    this.template('UserException.java', srcDir + '/auth/exception/UserException.java');
+    this.template('auth/domain/Authority.java', srcDir + '/auth/domain/Authority.java');
+    this.template('auth/domain/OAuthClientDetails.java', srcDir + '/auth/domain/OAuthClientDetails.java');
+    this.template('auth/domain/OAuthClientDetailsBuilder.java', srcDir + '/auth/domain/OAuthClientDetailsBuilder.java');    
+    this.template('auth/domain/Role.java', srcDir + '/auth/domain/Role.java');
+    this.template('auth/domain/User.java', srcDir + '/auth/domain/User.java');
+    this.template('auth/domain/UserBuilder.java', srcDir + '/auth/domain/UserBuilder.java');
+    this.template('auth/domain/UserType.java', srcDir + '/auth/domain/UserType.java');
 
-    this.template('UserRespository.java', srcDir + '/auth/repository/UserRespository.java');
+    this.template('auth/exception/OAuthclientValidationException.java', srcDir + '/auth/exception/OAuthclientValidationException.java');
+    this.template('auth/exception/UserErrorMessages.java', srcDir + '/auth/exception/UserErrorMessages.java');
+    this.template('auth/exception/UserErrorType.java', srcDir + '/auth/exception/UserErrorType.java');
+    this.template('auth/exception/UserException.java', srcDir + '/auth/exception/UserException.java');
 
-    this.template('UserService.java', srcDir + '/auth/service/UserService.java');
+    this.template('auth/repository/UserRespository.java', srcDir + '/auth/repository/UserRespository.java');
+
+    this.template('auth/service/UserService.java', srcDir + '/auth/service/UserService.java');
+
+    this.template('config/CorsFilter.java', srcDir + '/config/CorsFilter.java');
+    this.template('config/OAuth2AuthorizationServerConfigInMemory.java', srcDir + '/config/OAuth2AuthorizationServerConfigInMemory.java');
+    this.template('config/WebSecurityConfig.java', srcDir + '/config/WebSecurityConfig.java');
+
+    this.template('controller/RevokeTokenEndpoint.java', srcDir + '/controller/RevokeTokenEndpoint.java');
+    this.template('controller/TokenController.java', srcDir + '/controller/TokenController.java');
+
+
+
 
  
         mkdirp('src/main/resources');
