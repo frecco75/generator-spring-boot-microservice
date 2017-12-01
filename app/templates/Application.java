@@ -27,7 +27,7 @@ import org.springframework.security.oauth2.client.token.grant.code.Authorization
 public class <%=capModelName%>Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(<%=capModelName%>Application.class, args);
     }
 <% if (security) {%>
   @Autowired
