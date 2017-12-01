@@ -43,7 +43,7 @@ public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter 
         config.tokenServices(tokenServices());
     }
 
-    */
+
     @Bean
     @Primary
     public DefaultTokenServices tokenServices() {

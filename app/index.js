@@ -388,9 +388,6 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.capModelName = props.modelName.replace(/\b[a-z]/g, function(letter) {
                                                return letter.toUpperCase();
                                            });
-        this.capBaseName = props.baseName.replace(/\b[a-z]/g, function(letter) {
-                                               return letter.toUpperCase();
-                                           });
         props.packagingType = 'jar';
         this.packagingType = props.packagingType;
         this.coreWeb = props.coreWeb;
@@ -534,7 +531,7 @@ SpringGenerator.prototype.app = function app() {
         this.template('pom.xml', rootDir+'pom.xml');
     }
 
-    this.template('Application.java', srcDir + '/'+this.capBaseName+'Application.java');
+    this.template('Application.java', srcDir + '/'+this.capModelName+'Application.java');
 
     this.template('config/SwaggerConfiguration.java', srcDir + '/config/SwaggerConfiguration.java');
     this.template('config/Config.java', srcDir + '/config/Config.java');
