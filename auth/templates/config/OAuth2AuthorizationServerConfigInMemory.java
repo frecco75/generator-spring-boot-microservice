@@ -50,8 +50,8 @@ public class OAuth2AuthorizationServerConfigInMemory extends AuthorizationServer
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
-//    @Value("classpath:schema-MySql.sql")
-//    private Resource schemaScript;
+    @Value("jwt.signingKey")
+    private String signingKey;
 
     @Override
     public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
@@ -61,7 +61,7 @@ public class OAuth2AuthorizationServerConfigInMemory extends AuthorizationServer
     @Override
     public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {// @formatter:off
 		clients
-				.inMemory()
+                .inMemory()
 
                 .withClient("ui")
                 .authorizedGrantTypes("client_credentials", "password", "refresh_token","authorization_code", "implicit")
@@ -69,8 +69,35 @@ public class OAuth2AuthorizationServerConfigInMemory extends AuthorizationServer
                 .scopes("read", "write")
                 .accessTokenValiditySeconds(86400)
                 .refreshTokenValiditySeconds(30000)
+                .secret("uat_techoluti0n$ecret")
+                .autoApprove(true)
+                .redirectUris("http://<%=parentProject%>.techolution.qa/callback")
+
+                .and()
+
+                .withClient("prod-ui")
+                .authorizedGrantTypes("client_credentials", "password", "refresh_token","authorization_code", "implicit")
+                .authorities(Role.ROLE_TRUSTED_CLIENT.toString())
+                .scopes("read", "write")
+                .accessTokenValiditySeconds(86400)
+                .refreshTokenValiditySeconds(30000)
+                .secret("prod_techoluti0n$ecret")
+                .autoApprove(true)
+                .redirectUris("http://<%=parentProject%>.techolution.com/callback")
+
+                .and()
+
+                .withClient("local-ui")
+                .authorizedGrantTypes("client_credentials", "password", "refresh_token","authorization_code", "implicit")
+                .authorities(Role.ROLE_TRUSTED_CLIENT.toString())
+                .scopes("read", "write")
+                .accessTokenValiditySeconds(86400)
+                .refreshTokenValiditySeconds(30000)
                 .secret("secret")
-                .autoApprove(true);
+                .autoApprove(true)
+                .redirectUris("http://localhost:4200/callback")
+
+                ;
 		;
 	} // @formatter:on
 
@@ -101,7 +128,7 @@ public class OAuth2AuthorizationServerConfigInMemory extends AuthorizationServer
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        converter.setSigningKey("123");
+        converter.setSigningKey(signingKey);
         return converter;
     }
 

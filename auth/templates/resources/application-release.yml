@@ -1,8 +1,6 @@
 <%if (jdbc) {%>
 spring:
-  profiles: container
   jpa:
-    database: MYSQL
     show-sql: true
     hibernate:
       ddl-auto: update
@@ -20,7 +18,7 @@ spring:
 <%}%>
 config:
    oauth2:
-        ui-uri: http://<%=parentProject%>.techolution.qa
+        ui-uri: http://<%=parentProject%>.techolution.com
 
 # eureka:
 #   client:

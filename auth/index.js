@@ -251,10 +251,10 @@ SpringGenerator.prototype.app = function app() {
         mkdirp('src/main/resources');
         mkdirp('src/main/resources/static');
         mkdirp('src/main/resources/templates');
-        this.template('application.yml', resourceDir + '/application.yml');
-        this.template('application-container.yml', resourceDir + '/application-container.yml');
-        this.template('application-local.yml', resourceDir + '/application-local.yml');
-        this.template('application-release.yml', resourceDir + '/application-release.yml');
+        this.template('resources/application.yml', resourceDir + '/application.yml');
+        this.template('resources/application-container.yml', resourceDir + '/application-container.yml');
+        this.template('resources/application-local.yml', resourceDir + '/application-local.yml');
+        this.template('resources/application-release.yml', resourceDir + '/application-release.yml');
  
     this.config.set('packageName', this.packageName);
     this.config.set('packageFolder', packageFolder);
