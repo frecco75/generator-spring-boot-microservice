@@ -34,16 +34,16 @@ hystrix:
 <% if (zuul) {%>
 zuul:
   routes:
-    microservice:
-      path: '/json/microservice/**'
-      serviceId: microservice-server
+    resource:
+      path: '/json/resource/**'
+      serviceId: resource
       stripPrefix: false
 <%}%>    
 
-<% if (swagger) {%>
+<% if (swagger && zuul) {%>
 swagger-ui:
   configuration:
-    application-name: <%=baseName%>
+    application-name: resource
     path: v2/api-docs
     version: 1
 <%}%>
