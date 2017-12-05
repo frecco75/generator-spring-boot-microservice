@@ -2,21 +2,21 @@
 
 buildscript {
     ext {
-        springBootVersion = <%=springBootVersion%>
-        springVersion = <%=springVersion%>
+        springBootVersion = "<%=springBootVersion%>"
+        springVersion = "<%=springVersion%>"
 
-        springCloudVersion = <%=springCloudVersion%>
-        springCloudSsoVersion = <%=springCloudSsoVersion%>
-        springCloudServicesVersion = <%=springCloudServicesVersion%>
-        springSecurityVersion = <%=springSecurityVersion%>
+        springCloudVersion = "<%=springCloudVersion%>"
+        springCloudSsoVersion = "<%=springCloudSsoVersion%>"
+        springCloudServicesVersion = "<%=springCloudServicesVersion%>"
+        springSecurityVersion = "<%=springSecurityVersion%>"
 
         certTrusterVersion = "1.0.1.RELEASE"
-        hibernateVersion = <%=hibernateVersion%>
-        slf4jVersion = <%=slf4jVersion%>
-        junitVersion = <%=junitVersion%>
-        mysqlVersion = <%=mysqlVersion%>
+        hibernateVersion = "<%=hibernateVersion%>"
+        slf4jVersion = "<%=slf4jVersion%>"
+        junitVersion = "<%=junitVersion%>"
+        mysqlVersion = "<%=mysqlVersion%>"
 
-        dockerVersion = <%=dockerVersion%>
+        dockerVersion = "<%=dockerVersion%>"
     }
 
     repositories {
