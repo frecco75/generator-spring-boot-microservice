@@ -15,5 +15,5 @@ logging:
     com.netflix.zuul: INFO
 
 jwt:
-  signingKey: techocamp
+  signingKey: <%=parentProject%>
   

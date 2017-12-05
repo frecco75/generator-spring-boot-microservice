@@ -40,12 +40,6 @@ SpringGenerator.prototype.askFor = function askFor() {
 
 
     var prompts = [
-//        {
-//            type: 'string',
-//            name: 'bootVersion',
-//            message: 'Enter Spring Boot version:',
-//            default: '1.4.1.RELEASE'
-//        },
         {
             type: 'string',
             name: 'packageName',
@@ -76,13 +70,6 @@ SpringGenerator.prototype.askFor = function askFor() {
         },
         
         	
-        
-//        {
-//            type: 'string',
-//            name: 'javaVersion',
-//            message: 'Enter Java version:',
-//            default: '1.8'
-//        },
 //        {
 //            type: 'string',
 //            name: 'packagingType',
@@ -109,10 +96,11 @@ SpringGenerator.prototype.askFor = function askFor() {
                     value: 'gradle',
                     checked: true
 
-                }, {
-                    name: 'Maven',
-                    value: 'maven'
                 }
+                // , {
+                //     name: 'Maven',
+                //     value: 'maven'
+                // }
             ]
         }, {
             type: 'checkbox',
@@ -121,7 +109,8 @@ SpringGenerator.prototype.askFor = function askFor() {
             choices: [
                 {
                     name: 'Web',
-                    value: 'web'
+                    value: 'web',
+                    checked: true
                 },
 //                {
 //                    name: 'Jetty (Tomcat will be uninstalled)',
@@ -129,18 +118,23 @@ SpringGenerator.prototype.askFor = function askFor() {
 //                },
                 {
                     name: 'Security',
-                    value: 'security'
-                }, {
+                    value: 'security',
+                    checked: true
+                }
+                , {
                     name: 'AOP',
                     value: 'aop'
-                },  {
+                }
+                ,  {
                     name: 'Websocket',
                     value: 'websocket'
-                }
-//                {
-//                    name: 'Jersey (JAX-RS)',
-//                    value: 'jersey'
-//                },
+                },
+
+               {
+                   name: 'Swagger',
+                   value: 'swagger',
+                   checked: true
+               }
 //                {
 //                    name: 'Rest Repositories',
 //                    value: 'rest'
@@ -228,16 +222,7 @@ SpringGenerator.prototype.askFor = function askFor() {
             name: 'cloud',
             message: 'Select Spring Cloud support:',
             choices: [
-                {
-                    name: 'Cloud Connectors',
-                    value: 'connectors'
-                }, {
-                    name: 'Cloud Bootstrap',
-                    value: 'bootstrap'
-                }, {
-                    name: 'Config Client',
-                    value: 'configClient'
-                },
+                
 //                {
 //                    name: 'Config Server',
 //                    value: 'configServer'
@@ -252,6 +237,10 @@ SpringGenerator.prototype.askFor = function askFor() {
 //                    value: 'eurekaServer'
 //                }
                 ,
+                {
+                   name: 'Zuul',
+                   value: 'zuul'
+               },
 //                 {
 //                    name: 'Feign',
 //                    value: 'feign'
@@ -268,7 +257,8 @@ SpringGenerator.prototype.askFor = function askFor() {
                     name: 'OAuth2',
                     value: 'oauth2',
                     checked: true
-                }, {
+                }
+                , {
                     name: 'Ribbon',
                     value: 'ribbon'
                 },
@@ -280,10 +270,16 @@ SpringGenerator.prototype.askFor = function askFor() {
 //                    name: 'Turbine AMQP',
 //                    value: 'turbineAmqp'
 //                },
-//                {
-//                    name: 'Zuul',
-//                    value: 'zuul'
-//                },
+               {
+                    name: 'Cloud Connectors',
+                    value: 'connectors'
+                }, {
+                    name: 'Cloud Bootstrap',
+                    value: 'bootstrap'
+                }, {
+                    name: 'Config Client',
+                    value: 'configClient'
+                },
                  {
                     name: 'AWS',
                     value: 'aws'
@@ -423,6 +419,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.hateoas = hasCoreWeb('hateoas');
         this.mobile = hasCoreWeb('mobile');
         this.restdocs = hasCoreWeb('restdocs');
+        this.swagger = hasCoreWeb('swagger');
 
         // Template Engines
         props.templates = [];
@@ -533,18 +530,30 @@ SpringGenerator.prototype.app = function app() {
 
     this.template('Application.java', srcDir + '/'+this.capModelName+'Application.java');
 
-    this.template('config/SwaggerConfiguration.java', srcDir + '/config/SwaggerConfiguration.java');
+    if (this.swagger)
+    {
+        this.template('config/SwaggerConfiguration.java', srcDir + '/config/SwaggerConfiguration.java');
+    }
+
     this.template('config/Config.java', srcDir + '/config/Config.java');
-    this.template('config/CorsFilter.java', srcDir + '/config/CorsFilter.java');
+    
+
+    if (this.security) {
+
     this.template('config/MethodSecurityConfig.java', srcDir + '/config/MethodSecurityConfig.java');
     this.template('config/OAuth2ResourceServerConfig.java', srcDir + '/config/OAuth2ResourceServerConfig.java');
     this.template('config/ResourceServerWebConfig.java', srcDir + '/config/ResourceServerWebConfig.java');
+    }
 
+    if (!this.zuul)
+    {
     this.template('RestController.java', srcDir + '/controller/'+this.capModelName+'RestController.java');
     this.template('Service.java', srcDir + '/service/'+this.capModelName+'Service.java');
     this.template('Model.java', srcDir + '/model/'+this.capModelName+'.java');
     this.template('ServiceTest.java', testDir + '/service/'+this.capModelName+'ServiceTest.java');
+    this.template('config/CorsFilter.java', srcDir + '/config/CorsFilter.java');
    
+    }
 //    if (this.useSpock) {
 //        var testDir = 'src/test/groovy/' + packageFolder;
 //        mkdirp(testDir);
@@ -553,11 +562,12 @@ SpringGenerator.prototype.app = function app() {
         mkdirp('src/main/resources');
         mkdirp('src/main/resources/static');
         mkdirp('src/main/resources/templates');
-        this.template('application.yml', resourceDir + '/application.yml');
-        this.template('application-local.yml',resourceDir + '/application-local.yml')
-        this.template('application-test.yml',resourceDir + '/application-test.yml')
-        this.template('application-container.yml',resourceDir + '/application-container.yml')
-        this.template('application-prod.yml',resourceDir + '/application-prod.yml')
+
+        this.template('resources/application.yml', resourceDir + '/application.yml');
+        this.template('resources/application-local.yml',resourceDir + '/application-local.yml')
+        this.template('resources/application-test.yml',resourceDir + '/application-test.yml')
+        this.template('resources/application-container.yml',resourceDir + '/application-container.yml')
+        this.template('resources/application-prod.yml',resourceDir + '/application-prod.yml')
     }
     this.config.set('packageName', this.packageName);
     this.config.set('packageFolder', packageFolder);

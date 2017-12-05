@@ -5,7 +5,7 @@ import com.techolution.service.<%=capModelName%>Service;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+<%if (security) {%>import org.springframework.security.access.prepost.PreAuthorize;<%}%>
 import java.util.List;
 
 @RestController
@@ -20,6 +20,7 @@ public class <%=capModelName%>RestController {
     }
 
     @GetMapping("/")
+    <%if (security) {%>@PreAuthorize("hasRole('USER')")<%}%>
     public ResponseEntity<List<<%=capModelName%>>> get<%=capModelName%>() {
         List<<%=capModelName%>> <%=modelName%>s = <%=modelName%>Service.get<%=capModelName%>s();
         if (<%=modelName%>s != null) {

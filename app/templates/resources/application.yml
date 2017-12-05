@@ -7,7 +7,11 @@ spring:
       name: <%=baseName%>
   profiles:
     active: local
- 
+<% if (security) {%>
+jwt:
+  signingKey: <%=parentProject%>
+<%}%>
+
 <% if (hystrix) {%> 
 hystrix: 
   threadpool: 
@@ -27,8 +31,22 @@ hystrix:
         timeoutINMilliseconds: 500
       
   <%} %>
-    
+<% if (zuul) {%>
+zuul:
+  routes:
+    microservice:
+      path: '/json/microservice/**'
+      serviceId: microservice-server
+      stripPrefix: false
+<%}%>    
 
+<% if (swagger) {%>
+swagger-ui:
+  configuration:
+    application-name: <%=baseName%>
+    path: v2/api-docs
+    version: 1
+<%}%>
 
 
 
