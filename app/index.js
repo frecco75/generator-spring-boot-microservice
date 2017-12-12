@@ -359,19 +359,20 @@ SpringGenerator.prototype.askFor = function askFor() {
                     value: 'remoteshell'
                 }
             ]
-        },
+        }
+        // ,
 //        {
 //            type: 'confirm',
 //            name: 'useSpock',
 //            message: 'Use Spock?',
 //            default: true
 //        },
-        {
-            type: 'string',
-            name: 'groovyVersion',
-            message: 'Enter Groovy version:',
-            default: '2.4.4'
-        }
+        // {
+        //     type: 'string',
+        //     name: 'groovyVersion',
+        //     message: 'Enter Groovy version:',
+        //     default: '2.4.4'
+        // }
     ];
 
     this.prompt(prompts, function(props) {
@@ -399,7 +400,8 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.social = props.social;
         this.ops = props.ops;
         this.useSpock = props.useSpock;
-        this.groovyVersion = props.groovyVersion;
+        // this.groovyVersion = props.groovyVersion;
+        this.groovyVersion = '2.4.4';
         this.buildTool = props.buildTool;
 
         // Packaging Type

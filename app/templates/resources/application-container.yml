@@ -20,13 +20,12 @@ eureka:
      properties:
        hibernate:
          dialect: org.hibernate.dialect.MySQL5Dialect
-<%}%>
    datasource:
      url: jdbc:mysql://assessment-db/assessment?useSSL=false
      username: root
      password: admin123
      driver-class-name: com.mysql.jdbc.Driver
-
+<%}%>
 
 <%if (mongodb) {%>
    data:
