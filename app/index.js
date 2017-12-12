@@ -543,8 +543,9 @@ SpringGenerator.prototype.app = function app() {
         this.template('config/SwaggerConfiguration.java', srcDir + '/config/SwaggerConfiguration.java');
     }
 
-    this.template('config/Config.java', srcDir + '/config/Config.java');
-    
+    if (this.web) {
+        this.template('config/Config.java', srcDir + '/config/Config.java');
+    }
 
     if (this.security) {
 
@@ -555,7 +556,9 @@ SpringGenerator.prototype.app = function app() {
 
     if (!this.zuul)
     {
-    this.template('RestController.java', srcDir + '/controller/'+this.capModelName+'RestController.java');
+        if (this.web) {
+            this.template('RestController.java', srcDir + '/controller/'+this.capModelName+'RestController.java');
+        }
     this.template('Service.java', srcDir + '/service/'+this.capModelName+'Service.java');
     this.template('Model.java', srcDir + '/model/'+this.capModelName+'.java');
     this.template('ServiceTest.java', testDir + '/service/'+this.capModelName+'ServiceTest.java');
