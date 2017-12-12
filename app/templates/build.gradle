@@ -81,6 +81,9 @@ dependencies {
   <% if (jms) { %>compile "org.springframework.boot:spring-boot-starter-hornetq"<% } %>
   <% if (amqp) { %>compile "org.springframework.boot:spring-boot-starter-amqp"<% } %>
   <% if (mail) { %>compile "org.springframework.boot:spring-boot-starter-mail"<% } %>
+  <% if (kafka) { %>compile "org.springframework.kafka:spring-kafka:$kafkaVersion"<% } %>
+
+
 
   <% if (facebook) { %>compile "org.springframework.boot:spring-boot-starter-social-facebook"<% } %>
   <% if (linkedin) { %>compile "org.springframework.boot:spring-boot-starter-social-linkedin"<% } %>

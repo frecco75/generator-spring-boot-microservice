@@ -9,6 +9,7 @@ buildscript {
         springCloudSsoVersion = "<%=springCloudSsoVersion%>"
         springCloudServicesVersion = "<%=springCloudServicesVersion%>"
         springSecurityVersion = "<%=springSecurityVersion%>"
+        kafkaVersion = "<%=kafkaVersion%>"
 
         certTrusterVersion = "1.0.1.RELEASE"
         hibernateVersion = "<%=hibernateVersion%>"

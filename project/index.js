@@ -93,6 +93,12 @@ SpringGenerator.prototype.askFor = function askFor() {
                 name: 'springSecurityVersion',
                 message: 'Enter the spring security version',
                 default: '4.1.3.RELEASE'
+            },
+            {
+                type: 'string',
+                name: 'kafkaVersion',
+                message: 'Enter the spring kafka version',
+                default: '2.1.0.RELEASE'
             }
             ,
             {
@@ -148,6 +154,7 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.springCloudSsoVersion = props.springCloudSsoVersion;
         this.springCloudServicesVersion = props.springCloudServicesVersion;
         this.springSecurityVersion = props.springSecurityVersion;
+        this.kafkaVersion = props.kafkaVersion;
 
         this.hibernateVersion = props.hibernateVersion;
         this.slf4jVersion = props.slf4jVersion;

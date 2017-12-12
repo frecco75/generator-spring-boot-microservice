@@ -321,6 +321,10 @@ SpringGenerator.prototype.askFor = function askFor() {
                  {
                     name: 'Mail',
                     value: 'mail'
+                },
+                 {
+                    name: 'Kafka',
+                    value: 'kafka'
                 }
             ]
         },
@@ -492,6 +496,8 @@ SpringGenerator.prototype.askFor = function askFor() {
         this.jms = hasIO('jms');
         this.amqp = hasIO('amqp');
         this.mail = hasIO('mail');
+        this.kafka = hasIO('kafka');
+
 
         // Social
         props.social = [];
@@ -551,8 +557,10 @@ SpringGenerator.prototype.app = function app() {
     this.template('Service.java', srcDir + '/service/'+this.capModelName+'Service.java');
     this.template('Model.java', srcDir + '/model/'+this.capModelName+'.java');
     this.template('ServiceTest.java', testDir + '/service/'+this.capModelName+'ServiceTest.java');
-    this.template('config/CorsFilter.java', srcDir + '/config/CorsFilter.java');
-   
+
+        if (this.web) {
+           this.template('config/CorsFilter.java', srcDir + '/config/CorsFilter.java');
+            }
     }
 //    if (this.useSpock) {
 //        var testDir = 'src/test/groovy/' + packageFolder;
