@@ -566,16 +566,19 @@ SpringGenerator.prototype.app = function app() {
 //        var testDir = 'src/test/groovy/' + packageFolder;
 //        mkdirp(testDir);
 //    }
+
+    mkdirp('src/main/resources');
+    this.template('resources/application.yml', resourceDir + '/application.yml');
+    this.template('resources/application-local.yml',resourceDir + '/application-local.yml')
+    this.template('resources/application-test.yml',resourceDir + '/application-test.yml')
+    this.template('resources/application-container.yml',resourceDir + '/application-container.yml')
+    this.template('resources/application-prod.yml',resourceDir + '/application-prod.yml')
+
     if (this.web || this.thymeleaf || this.gtemplates || this.mustache) {
-        mkdirp('src/main/resources');
+        
         mkdirp('src/main/resources/static');
         mkdirp('src/main/resources/templates');
 
-        this.template('resources/application.yml', resourceDir + '/application.yml');
-        this.template('resources/application-local.yml',resourceDir + '/application-local.yml')
-        this.template('resources/application-test.yml',resourceDir + '/application-test.yml')
-        this.template('resources/application-container.yml',resourceDir + '/application-container.yml')
-        this.template('resources/application-prod.yml',resourceDir + '/application-prod.yml')
     }
     this.config.set('packageName', this.packageName);
     this.config.set('packageFolder', packageFolder);
