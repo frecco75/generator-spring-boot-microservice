@@ -41,29 +41,24 @@ SpringGenerator.prototype.askFor = function askFor() {
 
     var prompts = [
         {
-            type: 'string',
             name: 'packageName',
-            message: 'Enter default package name:',
+            message: 'Enter default full package name:',
             default: 'com.techolution'
         }, {
-            type: 'string',
             name: 'baseName',
             message: 'Enter microservice name of app:',
             default: 'training-server'
         } , {
-            type: 'string',
             name: 'parentProject',
             message: 'Enter the name of the project this belongs to',
             default: 'techocamp'
         },
         {
-            type: 'string',
             name: 'modelName',
             message: 'Enter the name of the first domain you plan on creating (should be lower case)',
             default: 'training'
         },
         {
-        	type: 'string',
         	name:'portNumber',
         	message:'Enter port number',
         	default:'8080'
